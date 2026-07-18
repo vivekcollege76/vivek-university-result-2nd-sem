@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Marksheet</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <div class="card">
+
+        <h1>Vivek University</h1>
+        <h2>Student Marksheet</h2>
+
+        <img id="resultImage" src="" alt="Marksheet">
+
+        <br><br>
+
+        <button onclick="window.print()">
+            🖨 Print Marksheet
+        </button>
+
+        <br><br>
+
+        <button onclick="downloadImage()">
+            ⬇ Download Marksheet
+        </button>
+
+        <br><br>
+
+        <button onclick="window.location.href='index.html'">
+            🔙 Search Another Result
+        </button>
+
+    </div>
+
+</div>
+
+<script>
+
+const image = localStorage.getItem("resultImage");
+
+if(image){
+    document.getElementById("resultImage").src = image;
+}else{
+    document.body.innerHTML =
+    "<h2 style='text-align:center;margin-top:50px;'>Result Not Found</h2>";
+}
+
+function downloadImage(){
+
+    const link = document.createElement("a");
+    link.href = image;
+    link.download = "Marksheet.png";
+    link.click();
+
+}
+
+</script>
+
+</body>
+</html>
